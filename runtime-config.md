@@ -3,7 +3,7 @@
 Additional filesystems can be declared as "mounts", specified in the *mounts* array. The parameters are similar to the ones in Linux mount system call. [http://linux.die.net/man/2/mount](http://linux.die.net/man/2/mount)
 
 * **type** (string, required) Linux, *filesystemtype* argument supported by the kernel are listed in */proc/filesystems* (e.g., "minix", "ext2", "ext3", "jfs", "xfs", "reiserfs", "msdos", "proc", "nfs", "iso9660"). Windows: ntfs
-* **source** (string, required) a device name, but can also be a directory name or a dummy. Windows, the volume name that is the target of the mount point. \\?\Volume\{GUID}\ (on Windows source is called target)
+* **source** (string, required) a device name, but can also be a directory name or a dummy. Windows, the volume name that is the target of the mount point. \\?\Volume\{GUID}\ (on Windows source is called target). Hypervisor Runtime, source can be the volume type (e.g., "qcow2", "raw", "vdi", "rbd") and the path of volume.
 * **destination** (string, required) where the source filesystem is mounted relative to the container rootfs.
 * **options** (list of strings, optional) in the fstab format [https://wiki.archlinux.org/index.php/Fstab](https://wiki.archlinux.org/index.php/Fstab).
 
@@ -52,3 +52,16 @@ Additional filesystems can be declared as "mounts", specified in the *mounts* ar
 ```
 
 See links for details about [mountvol](http://ss64.com/nt/mountvol.html) and [SetVolumeMountPoint](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365561(v=vs.85).aspx) in Windows.
+
+*Example (Hypervisor)*
+
+```json
+"mounts": [
+    {
+        "type": "ext3",
+        "source": "qcow2:/volumes/data.qcow2",
+        "destination": "/data",
+        "options": ["rw"]
+    }
+]
+```
