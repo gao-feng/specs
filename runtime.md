@@ -13,6 +13,7 @@ By providing a default location that container state is stored external applicat
 * **id** (string) ID is the container's ID.
 * **pid** (int) Pid is the ID of the main process within the container.
 * **root** (string) Root is the path to the container's bundle directory.
+* **runtime** (string) Runtime is the runtime of OCI container.
 
 The ID is provided in the state because hooks will be executed with the state as the payload.
 This allows the hook to perform clean and teardown logic after the runtime destroys its own state.
@@ -25,7 +26,8 @@ The root directory to the bundle is provided in the state so that consumers can 
 {
     "id": "oc-container",
     "pid": 4422,
-    "root": "/containers/redis"
+    "root": "/containers/redis",
+    "runtime": "runc"
 }
 ```
 

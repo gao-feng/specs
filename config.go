@@ -67,4 +67,6 @@ type State struct {
 	Pid int `json:"pid"`
 	// Root is the path to the container's bundle directory.
 	Root string `json:"root"`
+	// Runtime is the runtime of OCI container
+	Runtime string `json:"runtime"`
 }
