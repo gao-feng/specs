@@ -67,4 +67,6 @@ type State struct {
 	Pid int `json:"pid"`
 	// Root is the path to the container's bundle directory.
 	Root string `json:"root"`
+	// Lables is the runtime itself specified information.
+	Labels map[string]string `json:"labels"`
 }
